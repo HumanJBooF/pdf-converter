@@ -12,9 +12,10 @@ const { html } = require("./html");
 
 pdf
   .create(html({ monitor_report: "1000000000" }), {
-    format: "Letter",
     base: "file:///" + assetPath,
     quality: "75",
+    width: "980px",
+    height: "1000px",
   })
   .toFile("./test.pdf", (err, res) => {
     if (err) return console.log(err, "ERR");
