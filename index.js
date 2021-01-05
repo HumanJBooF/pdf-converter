@@ -2,8 +2,12 @@ const express = require("express");
 
 const app = express();
 const PORT = 4000;
-
+const path = require("path");
 const pdf = require("html-pdf");
+const assetPath = path
+  .join(__dirname + "/./assets/")
+  .replace(new RegExp(/\\/g), "/");
+
 const html = `<!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,7 +47,7 @@ const html = `<!DOCTYPE html>
             }
 
             .tech-pdf-body.demo-pdf {
-                background-image: url('assets/images/pdfs/demo-background.png');
+                background-image: url('images/pdfs/demo-background.png');
                 /* background-position: left 1375px; */
                 background-position: 0 10%;
                 background-repeat: repeat-y;
@@ -536,7 +540,7 @@ const html = `<!DOCTYPE html>
         <div class="container">
             <div class="tech-pdf-wrapper">
                 <div class="r-pdf-header">
-                    <img src="assets/images/pdfs/resideo-header.jpg" alt="resideo" />
+                    <img src="images/pdfs/resideo-header.jpg" alt="resideo" />
                     <!-- <%= public_send(image_tag_type, "pdfs/resideo-header.jpg" , alt:"Resideo")%> -->
                 </div>
 
@@ -555,7 +559,7 @@ const html = `<!DOCTYPE html>
                         <span>What to care about</span>
                     </div>
                     <div class="column align-right air-advice-image">
-                        <img src="assets/images/pdfs/powered-by-aa.png" height="65px" width="auto" alt="resideo" />
+                        <img src="images/pdfs/powered-by-aa.png" height="65px" width="auto" alt="resideo" />
                         <!-- <%= public_send(image_tag_type, "pdfs/powered-by-aa.png" , height:"65px", width:"auto", alt:"Air Advice")%> -->
                     </div>
                 </div>
@@ -570,7 +574,7 @@ const html = `<!DOCTYPE html>
                         <tr>
                             <td>Carbon Monoxide</td>
                             <td class="control-icon-column" valign="middle">
-                                <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                <img src="images/pdfs/good-icon.png" class="control-icon" />
                                 <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt: range_value, class: "control-icon" ) %> -->
                                 <span class="good-status">
                                     GOOD
@@ -585,7 +589,7 @@ const html = `<!DOCTYPE html>
                         <tr>
                             <td>Odors & Smells</td>
                             <td>
-                                <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                <img src="images/pdfs/good-icon.png" class="control-icon" />
                                 <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt:range_value, class: "control-icon" ) %> -->
                                 <span class="good-status">
                                     GOOD
@@ -600,7 +604,7 @@ const html = `<!DOCTYPE html>
                         <tr>
                             <td>Relative Humidity</td>
                             <td>
-                                <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                <img src="images/pdfs/good-icon.png" class="control-icon" />
                                 <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt:range_value, class: "control-icon" ) %> -->
                                 <span class="good-status">
                                     GOOD
@@ -615,7 +619,7 @@ const html = `<!DOCTYPE html>
                         <tr>
                             <td>Carbon Dioxide</td>
                             <td>
-                                <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                <img src="images/pdfs/good-icon.png" class="control-icon" />
                                 <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt:range_value,
                                     class: "control-icon" ) %> -->
                                 <span class="good-status">
@@ -631,7 +635,7 @@ const html = `<!DOCTYPE html>
                         <tr>
                             <td>Temperature</td>
                             <td>
-                                <img src="assets/images/pdfs/marginal-icon.png" class="control-icon" />
+                                <img src="images/pdfs/marginal-icon.png" class="control-icon" />
                                 <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt:range_value, class: "control-icon" ) %> -->
                                 <span class="marginal-status">
                                     MARGINAL
@@ -646,7 +650,7 @@ const html = `<!DOCTYPE html>
                         <tr>
                             <td>Particles</td>
                             <td>
-                                <img src="assets/images/pdfs/needs_attention-icon.png" class="control-icon" />
+                                <img src="images/pdfs/needs_attention-icon.png" class="control-icon" />
                                 <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt:range_value, class: "control-icon" ) %> -->
                                 <span class="needs_attention-status">
                                     NEEDS ATTENTION
@@ -677,7 +681,7 @@ const html = `<!DOCTYPE html>
                                         Carbon Monoxide
                                     </div>
                                     <div class="status-wrap">
-                                        <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                        <img src="images/pdfs/good-icon.png" class="control-icon" />
                                         <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" ,alt:range_value,
                                             class: "control-icon" ) %> -->
                                         <span class="good-status">
@@ -717,7 +721,7 @@ const html = `<!DOCTYPE html>
                             </td>
                             <td class="dial-column">
                                 <div class="dial">
-                                    <img src="assets/images/pdfs/carbon-monoxide.png" alt="carbon-monoxide" />
+                                    <img src="images/pdfs/carbon-monoxide.png" alt="carbon-monoxide" />
                                     <!-- <%= public_send(image_tag_type, "pdfs/carbon-monoxide.png" , alt:"carbon monoxide
                                         meter") %> -->
                                     <div class="needle needle-co" style="-webkit-transform: rotate(-120deg)">
@@ -748,7 +752,7 @@ const html = `<!DOCTYPE html>
                                         Odors & Smells
                                     </div>
                                     <div class="status-wrap">
-                                        <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                        <img src="images/pdfs/good-icon.png" class="control-icon" />
                                         <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" ,alt:range_value,
                                             class:"control-icon") %> -->
                                         <span class="good-status">
@@ -786,7 +790,7 @@ const html = `<!DOCTYPE html>
                             </td>
                             <td class="dial-column">
                                 <div class="dial">
-                                    <img src="assets/images/pdfs/odors-and-smells.png" alt="odors and smells" />
+                                    <img src="images/pdfs/odors-and-smells.png" alt="odors and smells" />
                                     <!-- <%= public_send(image_tag_type, "pdfs/odors-and-smells.png" , alt:"odors and smells
                                         meter") %> -->
                                     <div class="needle needle-odor" style="-webkit-transform: rotate(-110deg)">
@@ -817,7 +821,7 @@ const html = `<!DOCTYPE html>
                                         Relative Humidity
                                     </div>
                                     <div class="status-wrap">
-                                        <img src="assets/images/pdfs/good-icon.png" class="control-icon">
+                                        <img src="images/pdfs/good-icon.png" class="control-icon">
                                         <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png"
                                             ,height:"auto",width:"18px",alt:range_value) %> -->
                                         <span class="good-status">
@@ -859,7 +863,7 @@ const html = `<!DOCTYPE html>
                             </td>
                             <td class="dial-column">
                                 <div class="dial">
-                                    <img src="assets/images/pdfs/relative-humidity.png" />
+                                    <img src="images/pdfs/relative-humidity.png" />
                                     <!-- <%= public_send(image_tag_type, "pdfs/relative-humidity.png" , alt:"relative
                                         humidity meter") %> -->
                                     <div class="needle needle-humi" style="-webkit-transform: rotate(-35deg)"></div>
@@ -889,7 +893,7 @@ const html = `<!DOCTYPE html>
                                         Carbon Dioxide
                                     </div>
                                     <div class="status-wrap">
-                                        <img src="assets/images/pdfs/good-icon.png" class="control-icon" />
+                                        <img src="images/pdfs/good-icon.png" class="control-icon" />
                                         <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" , alt:range_value,
                                             class: "control-icon" ) %> -->
                                         <span class="good-status">
@@ -929,7 +933,7 @@ const html = `<!DOCTYPE html>
                             </td>
                             <td class="dial-column">
                                 <div class="dial">
-                                    <img src="assets/images/pdfs/carbon-dioxide.png" />
+                                    <img src="images/pdfs/carbon-dioxide.png" />
                                     <!-- <%= public_send(image_tag_type, "pdfs/carbon-dioxide.png" , alt:"carbon monoxide
                                         meter") %> -->
                                     <div class="needle needle-co2" style="-webkit-transform: rotate(-48deg)">
@@ -960,7 +964,7 @@ const html = `<!DOCTYPE html>
                                         Temperature
                                     </div>
                                     <div class="status-wrap">
-                                        <img src="assets/images/pdfs/marginal-icon.png" class="control-icon">
+                                        <img src="images/pdfs/marginal-icon.png" class="control-icon">
                                         <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" ,alt:range_value,
                                             class:"control-icon") %> -->
                                         <span class="marginal-status">
@@ -1009,7 +1013,7 @@ const html = `<!DOCTYPE html>
                             </td>
                             <td class="dial-column">
                                 <div class="temp-dial dial">
-                                    <img src="assets/images/pdfs/temperature.png" />
+                                    <img src="images/pdfs/temperature.png" />
                                     <!-- <%= public_send(image_tag_type, "pdfs/temperature.png" , alt:"temperature meter") %> -->
                                     <div class="needle needle-temp" style="-webkit-transform: rotate(-16deg)">
                                     </div>
@@ -1040,7 +1044,7 @@ const html = `<!DOCTYPE html>
                                         Particles
                                     </div>
                                     <div class="status-wrap">
-                                        <img src="assets/images/pdfs/needs_attention-icon.png" class="control-icon" />
+                                        <img src="images/pdfs/needs_attention-icon.png" class="control-icon" />
                                         <!-- <%= public_send(image_tag_type, "pdfs/#{range_value}-icon.png" ,alt:range_value,
                                             class: "control-icon" ) %> -->
                                         <span class="needs_attention-status">
@@ -1086,7 +1090,7 @@ const html = `<!DOCTYPE html>
                             <td class="dial-column">
 
                                 <div class="dial">
-                                    <img src="assets/images/pdfs/particles.png" />
+                                    <img src="images/pdfs/particles.png" />
                                     <!-- <%= public_send(image_tag_type, "pdfs/particles.png" , alt:"particles meter") %> -->
                                     <div class="needle needle-particle" style="-webkit-transform: rotate(0deg)"></div>
                                 </div>
@@ -1114,8 +1118,14 @@ const html = `<!DOCTYPE html>
 
 </html>`;
 
-pdf.create(html, { format: "Letter" }).toFile("./test.pdf", (err, res) => {
-  if (err) return console.log(err, "ERR");
-  console.log(res, "RES");
-});
+pdf
+  .create(html, {
+    format: "Letter",
+    base: "file:///" + assetPath,
+    quality: "75",
+  })
+  .toFile("./test.pdf", (err, res) => {
+    if (err) return console.log(err, "ERR");
+    console.log(res, "RES");
+  });
 app.listen(PORT, () => console.log(`Listening on port #${PORT}`));
